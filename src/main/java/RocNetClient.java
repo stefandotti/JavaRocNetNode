@@ -3,17 +3,18 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
-import java.net.*;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by stefan on 02.09.2016.
  */
 public class RocNetClient {
 
-    private final JList<String> list;
-    private final DefaultListModel<String> model;
+    private final JTextPane area;
 
     enum Group {
         Host,
@@ -37,6 +38,8 @@ public class RocNetClient {
 
     private boolean end = false;
 
+    private List<String> queue = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
         new RocNetClient();
     }
@@ -44,13 +47,9 @@ public class RocNetClient {
     public RocNetClient() throws IOException {
         JFrame f = new JFrame("Abfahrten");
         f.setBackground(Color.blue);
-        list = new JList<String>(this.model = new DefaultListModel<String>());
-//        list.setBackground(new Color(0, 0, 150));
-        list.setBackground(new Color(0, 0, 111));
-        list.setFont(list.getFont().deriveFont(24f));
-        list.setForeground(Color.white);
-        list.setVisibleRowCount(8);
-        list.setPreferredSize(new Dimension(480,320));
+        area = new JTextPane();
+        area.setText("<html><head><style>body { width: 480px; height: 180px; }</style></head><body></body></html>");
+        area.setContentType("text/html");
         f.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         f.addWindowListener(new WindowAdapter() {
             @Override
@@ -59,7 +58,7 @@ public class RocNetClient {
                 e.getWindow().dispose();
             }
         });
-        f.getContentPane().add(list);
+        f.getContentPane().add(area);
         f.pack();
         f.setLocation(10, 10);
         f.setVisible(true);
@@ -102,17 +101,30 @@ public class RocNetClient {
         bin.read(data);
 
         if (group == Group.Display) {
-            System.out.println("TEXT = " + new String(data));
+            System.out.println("TEXT = " + new String(data)+ "  ["+receipientIdL+"]");
             if (new String(data).trim().isEmpty()) {
-                if (model.size() > 0) {
-                    model.remove(0);
+                if (queue.size() > 0) {
+                    queue.remove(0);
                 }
             } else {
-                model.addElement(new String(data));
+                queue.add(new String(data));
             }
+            updateText();
         }
 
         bout.flush();
+    }
+
+    private void updateText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<html><head><style>body { font-family: arial, verdana, sans-serif; font-size: 18px; background-color: #000096; color: white; width: 480px; height: 180px; }</style></head><body><ul>");
+        for(String line : this.queue) {
+            sb.append("<li>");
+            sb.append(line);
+            sb.append("</li>");
+        }
+        sb.append("</ul></body></html>");
+        area.setText(sb.toString());
     }
 
 }

@@ -1,12 +1,31 @@
 body {
+  font-family: Arial;
   padding: 20px;
-  background-color: #000069;
+  background-color: #000096;
   color: white;
+  width: 1024px; height: 768px; margin: 0 auto;
 }
 
-h1 {
-  border-bottom: 1px solid gray;
-  margin-top: 0;
+.header {
+    overflow: hidden;
+    border-bottom: 1px solid gray;
+    padding: 1em;
+}
+.subheader {
+    padding: 1em;
+}
+
+.header img {
+    float: right;
+}
+
+.header h1 {
+    font-size: 60px;
+    padding: 0; margin: 0;
+}
+.subheader h2 {
+    font-size: 40px;
+    padding: 0; margin: 0;
 }
 
 a {
@@ -18,13 +37,20 @@ table.departures {
 }
 
 table.departures tr {
-    border-bottom: 1px solid gray;
+}
+
+td.ti, th.ti {
+    padding-left: 30px;
 }
 
 table.departures tr:nth-child(even) {
-    background-color: #000089;
+    background-color: #00006F;
 }
 
 table.departures td, table.departures th {
-    padding: 10px;
+}
+
+table.departures td {
+    font-size: 40px;
+    vertical-align: bottom;
 }

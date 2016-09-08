@@ -1,9 +1,14 @@
 package at.dotti.rocnet;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.Excluder;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
+import javax.json.stream.JsonParser;
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
@@ -12,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by stefan on 08.09.2016.
@@ -54,11 +61,15 @@ public class RocNetService {
                 ms.joinGroup(addr);
 
                 while (!end) {
-                    byte[] buffer = new byte[1024 * 8];
+                    try {
+                        byte[] buffer = new byte[1024 * 8];
 
-                    DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
-                    ms.receive(dp);
-                    processPacket(dp);
+                        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+                        ms.receive(dp);
+                        processPacket(dp);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -97,11 +108,23 @@ public class RocNetService {
                     queue.remove(0);
                 }
             } else {
-                Calendar cal = Calendar.getInstance();
-                cal.setTimeInMillis(System.currentTimeMillis() + (1000 * 60));
+                String text = new String(data).trim();
+                Gson g = new Gson();
+                JsonObject o = g.fromJson(text, JsonObject.class);
 
-                //"S40", "Tulln an der Donau", SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(cal.getTime()), "", 1
-                queue.add(new Departure("S40", new String(data), SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(cal.getTime()), "", 1));
+                String next = o.get("text").getAsString();
+                String train = "";
+                if (next.indexOf('|') != -1) {
+                    train = next.substring(0, next.indexOf('|'));
+                    next = next.substring(train.length() + 1);
+                }
+                Pattern p = Pattern.compile("(?i)([a-z]+)([0-9]+)");
+                Matcher m = p.matcher(train);
+                Line line = null;
+                if (m.find()) {
+                    line = new Line(m.group(1).toLowerCase(), Integer.parseInt(m.group(2)));
+                }
+                queue.add(new Departure(line, next, o.get("ab").getAsString(), "", 1));
             }
         }
 

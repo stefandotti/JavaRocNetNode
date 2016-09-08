@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Departure {
 
-	private String trainName;
+	private Line line;
 
 	private int platform;
 
@@ -14,8 +14,8 @@ public class Departure {
 
 	private String current;
 
-	public Departure(String s40, String text, String time, String current, int platform) {
-		this.trainName = s40;
+	public Departure(Line line, String text, String time, String current, int platform) {
+		this.line = line;
 		this.text = text;
 		this.time = time;
 		this.current = current;
@@ -38,15 +38,6 @@ public class Departure {
 		this.text = text;
 	}
 
-	public String getTrainName() {
-
-		return trainName;
-	}
-
-	public void setTrainName(String trainName) {
-		this.trainName = trainName;
-	}
-
 	public String getTime() {
 		return time;
 	}
@@ -62,4 +53,12 @@ public class Departure {
 	public void setCurrent(String current) {
 		this.current = current;
 	}
+
+    public Line getLine() {
+        return line;
+    }
+
+    public void setLine(Line line) {
+        this.line = line;
+    }
 }

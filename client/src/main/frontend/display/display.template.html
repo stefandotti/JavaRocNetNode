@@ -1,15 +1,19 @@
 
-<h1>{{$ctrl.display.stationName}}</h1>
-
-<h2>Abfahrten (Departures)</h2>
+<div class="header">
+    <img src="http://fahrplan.oebb.at/img/vs_sq/logo_oebb_blau.png" title="oebb logo" alt="oebb logo" />
+    <h1>{{$ctrl.display.stationName}}</h1>
+</div>
+<div class="subheader">
+    <h2>Abfahrten / <i>Departures</i></h2>
+</div>
 <table class="departures">
-    <tr>
-        <th>Zeit</th><th>Aktuell</th><th>Fahrt</th><th>Nach</th><th>Bahnsteig</th>
-    </tr>
+    <tr><th class="ti">Abfahrt<br/><i>Departure</i></th><th>Erwartet<br/><i>Estimated</i></th>
+        <th>Linie<br/><i>Line</i></th><th>Richtung<br/><i>Direction</i></th>
+        <th>Gleis<br/><i>Track</i></th></tr>
     <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
         <td class="ti">{{departure.time}}</td>
         <td class="cu">{{departure.current}}</td>
-        <td class="fa">{{departure.trainName}}</td>
+        <td class="fa"><img src="http://fahrplan.oebb.at/img/vs_sq/products/weiss/{{departure.line.type}}.gif" /> {{departure.line.number}}</td>
         <td class="to">{{departure.text}}</td>
         <td class="pl">{{departure.platform}}</td>
     </tr>

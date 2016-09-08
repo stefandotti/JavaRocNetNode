@@ -1,0 +1,7 @@
+<div class="container-fluid">
+      <ul class="departures">
+        <li ng-repeat="station in $ctrl.departures" class="station-list-item">
+          <a href="#!/display/{{station.stationId}}">{{station.stationName}}</a>
+        </li>
+      </ul>
+</div>

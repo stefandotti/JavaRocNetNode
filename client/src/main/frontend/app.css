@@ -1,0 +1,26 @@
+body {
+  padding: 20px;
+  background-color: #000069;
+  color: white;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+  margin-top: 0;
+}
+
+table.departures {
+    width: 100%;
+}
+
+table.departures tr {
+    border-bottom: 1px solid gray;
+}
+
+table.departures tr:nth-child(even) {
+    background-color: #000089;
+}
+
+table.departures td, table.departures th {
+    padding: 10px;
+}

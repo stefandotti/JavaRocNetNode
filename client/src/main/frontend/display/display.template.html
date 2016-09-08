@@ -1,0 +1,17 @@
+
+<h1>{{$ctrl.display.stationName}}</h1>
+
+<h2>Abfahrten (Departures)</h2>
+<table class="departures">
+    <tr>
+        <th>Zeit</th><th>Aktuell</th><th>Fahrt</th><th>Nach</th><th>Bahnsteig</th>
+    </tr>
+    <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
+        <td class="ti">{{departure.time}}</td>
+        <td class="cu">{{departure.current}}</td>
+        <td class="fa">{{departure.trainName}}</td>
+        <td class="to">{{departure.text}}</td>
+        <td class="pl">{{departure.platform}}</td>
+    </tr>
+</table>
+

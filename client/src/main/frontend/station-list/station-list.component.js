@@ -8,7 +8,6 @@ angular.
     controller: ['Stations',
       function StationListController(Station) {
         this.stations = Station.query();
-        this.orderProp = 'age';
       }
     ]
   });

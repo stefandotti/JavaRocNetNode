@@ -9,6 +9,10 @@ h1 {
   margin-top: 0;
 }
 
+a {
+  color: white;
+}
+
 table.departures {
     width: 100%;
 }

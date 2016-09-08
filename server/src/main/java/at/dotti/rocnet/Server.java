@@ -32,7 +32,7 @@ public class Server {
 		display.setStationId(1);
 		display.setStationName("Heiligenstadt");
 		Calendar cal = Calendar.getInstance();
-		cal.set(2016, 9, 8, 11, 14, 0);
+		cal.setTimeInMillis(System.currentTimeMillis() + (1000 * 60));
 		display.getDepartures().add(new Departure("S40", "Tulln an der Donau", SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT).format(cal.getTime()), "", 1));
 		return display;
 	}

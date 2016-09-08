@@ -8,6 +8,11 @@ public class Station implements Serializable {
 
 	private String stationName;
 
+	public Station(int stationId, String stationName) {
+		this.stationId = stationId;
+		this.stationName = stationName;
+	}
+
 	public String getStationName() {
 		return stationName;
 	}

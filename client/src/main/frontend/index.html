@@ -10,6 +10,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ng-resize/index.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     <script src="core/core.module.js"></script>
@@ -25,11 +26,9 @@
     <script src="display/display.module.js"></script>
     <script src="display/display.component.js"></script>
   </head>
-  <body>
-
+  <body ng-controller="resize" ng-resize="resized($event)">
     <div class="view-container">
       <div ng-view class="view-frame"></div>
     </div>
-
   </body>
 </html>

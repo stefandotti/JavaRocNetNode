@@ -1,0 +1,68 @@
+{
+  "schedules": {
+    "S40_Tulln_11": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Tulln an der Donau",
+      "departures": [
+        {
+          "time": "11",
+          "id": 1,
+          "platform": 1
+        },
+        {
+          "time": "13",
+          "id": 2,
+          "platform": 1
+        }
+      ]
+    },
+    "S40_Tulln_41": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Tulln an der Donau",
+      "departures": [
+        {
+          "time": "41",
+          "id": 1,
+          "platform": 1
+        },
+        {
+          "time": "43",
+          "id": 2,
+          "platform": 1
+        }
+      ]
+    },
+    "S40_Wien_30": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Wien Franz-Josefs-Bf",
+      "departures": [
+        {
+          "time": "30",
+          "id": 2,
+          "platform": 2
+        },
+        {
+          "time": "32",
+          "id": 1,
+          "platform": 2
+        }
+      ]
+    },
+    "S40_Wien_60": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Wien Franz-Josefs-Bf",
+      "departures": [
+        {
+          "time": "00",
+          "id": 2,
+          "platform": 2
+        },
+        {
+          "time": "02",
+          "id": 1,
+          "platform": 2
+        }
+      ]
+    }
+  }
+}

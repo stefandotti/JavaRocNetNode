@@ -48,7 +48,7 @@ public class RocNetService {
 
     private boolean end = false;
 
-    private List<Departure> queue = new ArrayList<>();
+    private List<String> queue = new ArrayList<>();
 
     @PostConstruct
     public void startup() {
@@ -112,19 +112,20 @@ public class RocNetService {
                 Gson g = new Gson();
                 JsonObject o = g.fromJson(text, JsonObject.class);
 
-                String next = o.get("text").getAsString();
-                String train = "";
-                if (next.indexOf('|') != -1) {
-                    train = next.substring(0, next.indexOf('|'));
-                    next = next.substring(train.length() + 1);
-                }
-                Pattern p = Pattern.compile("(?i)([a-z]+)([0-9]+)");
-                Matcher m = p.matcher(train);
-                Line line = null;
-                if (m.find()) {
-                    line = new Line(m.group(1).toLowerCase(), Integer.parseInt(m.group(2)));
-                }
-                queue.add(new Departure(line, next, o.get("ab").getAsString(), "", 1));
+//                String next = o.get("text").getAsString();
+//                String train = "";
+//                if (next.indexOf('|') != -1) {
+//                    train = next.substring(0, next.indexOf('|'));
+//                    next = next.substring(train.length() + 1);
+//                }
+//                Pattern p = Pattern.compile("(?i)([a-z]+)([0-9]+)");
+//                Matcher m = p.matcher(train);
+//                Line line = null;
+//                if (m.find()) {
+//                    line = new Line(m.group(1).toLowerCase(), Integer.parseInt(m.group(2)));
+//                }
+                String id = o.get("id").getAsString();
+                queue.add(id);
             }
         }
 
@@ -136,7 +137,7 @@ public class RocNetService {
         end = true;
     }
 
-    public List<Departure> getQueue() {
+    public List<String> getQueue() {
         return queue;
     }
 }

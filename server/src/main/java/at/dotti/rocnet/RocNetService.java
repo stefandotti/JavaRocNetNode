@@ -103,38 +103,24 @@ public class RocNetService {
 
         if (group == Group.Display) {
             System.out.println("TEXT = " + new String(data) + "  [" + receipientIdL + "]");
-            if (new String(data).trim().isEmpty()) {
-                if (queue.size() > 0) {
-                    queue.remove(0);
-                }
-            } else {
-                String text = new String(data).trim();
-                Gson g = new Gson();
-                JsonObject o = g.fromJson(text, JsonObject.class);
-
-//                String next = o.get("text").getAsString();
-//                String train = "";
-//                if (next.indexOf('|') != -1) {
-//                    train = next.substring(0, next.indexOf('|'));
-//                    next = next.substring(train.length() + 1);
-//                }
-//                Pattern p = Pattern.compile("(?i)([a-z]+)([0-9]+)");
-//                Matcher m = p.matcher(train);
-//                Line line = null;
-//                if (m.find()) {
-//                    line = new Line(m.group(1).toLowerCase(), Integer.parseInt(m.group(2)));
-//                }
-                String id = o.get("id").getAsString();
+            String text = new String(data).trim();
+            Gson g = new Gson();
+            RocNetText o = g.fromJson(text, RocNetText.class);
+            if (o.getType() == TYPE.remove) {
+                queue.remove(o.getId());
+            } else if (o.getType() == TYPE.enqueue) {
+                String id = o.getId();
                 queue.add(id);
+            } else if (o.getType() == TYPE.enter) {
+                // TODO not used
+            } else if (o.getType() == TYPE.departure) {
+                // TODO not used
+            } else {
+                System.err.println("unknown type = " + o.getType());
             }
         }
 
         bout.flush();
-    }
-
-    @PreDestroy
-    public void stop() {
-        end = true;
     }
 
     public List<String> getQueue() {

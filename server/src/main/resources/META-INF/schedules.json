@@ -6,12 +6,12 @@
       "departures": [
         {
           "time": "11",
-          "id": 1,
+          "id": "nd",
           "platform": 1
         },
         {
           "time": "13",
-          "id": 2,
+          "id": "hs",
           "platform": 1
         }
       ]
@@ -22,12 +22,12 @@
       "departures": [
         {
           "time": "41",
-          "id": 1,
+          "id": "nd",
           "platform": 1
         },
         {
           "time": "43",
-          "id": 2,
+          "id": "hs",
           "platform": 1
         }
       ]
@@ -38,12 +38,12 @@
       "departures": [
         {
           "time": "30",
-          "id": 2,
+          "id": "hs",
           "platform": 2
         },
         {
           "time": "32",
-          "id": 1,
+          "id": "nd",
           "platform": 2
         }
       ]
@@ -54,12 +54,12 @@
       "departures": [
         {
           "time": "00",
-          "id": 2,
+          "id": "hs",
           "platform": 2
         },
         {
           "time": "02",
-          "id": 1,
+          "id": "nd",
           "platform": 2
         }
       ]

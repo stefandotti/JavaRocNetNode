@@ -1,7 +1,5 @@
 package at.dotti.rocnet;
 
-import java.util.Date;
-
 public class Departure {
 
 	private Line line;

@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Display {
 
-	private int stationId;
+	private String stationId;
 	private String stationName;
 	private List<Departure> departures = new ArrayList<>();
 
-	public int getStationId() {
+	public String getStationId() {
 		return stationId;
 	}
 
-	public void setStationId(int stationId) {
+	public void setStationId(String stationId) {
 		this.stationId = stationId;
 	}
 

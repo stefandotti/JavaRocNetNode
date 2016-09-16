@@ -6,7 +6,7 @@ package at.dotti.rocnet;
 public class ScheduledDeparture {
 
     private String time;
-    private int id;
+    private String id;
     private int platform;
 
     public String getTime() {
@@ -17,11 +17,11 @@ public class ScheduledDeparture {
         this.time = time;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,6 +1,6 @@
 
 <div class="header">
-    <img src="http://fahrplan.oebb.at/img/vs_sq/logo_oebb_blau.png" title="oebb logo" alt="oebb logo" />
+    <img src="images/logo_oebb_blau.png" title="oebb logo" alt="oebb logo" />
     <h1>{{$ctrl.display.stationName}}</h1>
 </div>
 <div class="subheader">
@@ -13,7 +13,7 @@
     <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
         <td class="ti">{{departure.time}}</td>
         <td class="cu">{{departure.current}}</td>
-        <td class="fa"><img src="http://fahrplan.oebb.at/img/vs_sq/products/weiss/{{departure.line.type}}.gif" /> {{departure.line.number}}</td>
+        <td class="fa"><img src="images/{{departure.line.type}}.gif" /> {{departure.line.number}}</td>
         <td class="to">{{departure.text}}</td>
         <td class="pl">{{departure.platform}}</td>
     </tr>

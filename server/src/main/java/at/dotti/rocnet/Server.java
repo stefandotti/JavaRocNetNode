@@ -54,11 +54,13 @@ public class Server {
         for (String id : this.rocNetService.getQueue()) {
             Schedule schedule = this.schedules.getSchedules().get(id);
             if (schedule != null) {
-                ScheduledDeparture de = schedule.getDepartures().get(0);
-                if (de.getId().equals(stationId)) {
-                    Departure d = new Departure(new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber()), schedule.getDestination(), de.getTime(), "", de.getPlatform());
-                    display.getDepartures().add(d);
-                }
+		for(ScheduledDeparture de : schedule.getDepartures()) {
+                    if (de.getId().equals(stationId)) {
+                        Departure d = new Departure(new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber()), schedule.getDestination(), de.getTime(), "", de.getPlatform());
+                        display.getDepartures().add(d);
+			break;
+                    }
+		}
             }
         }
 

@@ -7,10 +7,11 @@
     <h2>Abfahrten / <i>Departures</i></h2>
 </div>
 <table class="departures">
-    <tr><th class="ti">Abfahrt<br/><i>Departure</i></th><th>Erwartet<br/><i>Estimated</i></th>
+    <tr><th>arr.</th><th class="ti">Abfahrt<br/><i>Departure</i></th><th>Erwartet<br/><i>Estimated</i></th>
         <th>Linie<br/><i>Line</i></th><th>Richtung<br/><i>Direction</i></th>
         <th>Gleis<br/><i>Track</i></th></tr>
     <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
+        <td class="ar">{{departure.arriving}}</td>
         <td class="ti">{{departure.time}}</td>
         <td class="cu">{{departure.current}}</td>
         <td class="fa"><img src="images/{{departure.line.type}}.gif" /> {{departure.line.number}}</td>

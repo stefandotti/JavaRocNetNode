@@ -50,6 +50,8 @@ public class RocNetService {
 
     private List<String> queue = new ArrayList<>();
 
+    private List<String> block = new ArrayList<>();
+
     @PostConstruct
     public void startup() {
         Thread th = new Thread(() -> {
@@ -112,9 +114,9 @@ public class RocNetService {
                 String id = o.getId();
                 queue.add(id);
             } else if (o.getType() == TYPE.enter) {
-                // TODO not used
+                block.add(o.getId());
             } else if (o.getType() == TYPE.departure) {
-                // TODO not used
+                block.remove(o.getId());
             } else {
                 System.err.println("unknown type = " + o.getType());
             }
@@ -125,5 +127,9 @@ public class RocNetService {
 
     public List<String> getQueue() {
         return queue;
+    }
+
+    public List<String> getBlock() {
+        return block;
     }
 }

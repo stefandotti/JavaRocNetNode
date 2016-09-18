@@ -5,15 +5,15 @@ package at.dotti.rocnet;
  */
 public class ScheduledDeparture {
 
-    private String time;
+    private short time;
     private String id;
     private int platform;
 
-    public String getTime() {
+    public short getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(short time) {
         this.time = time;
     }
 

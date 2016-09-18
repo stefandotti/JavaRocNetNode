@@ -3,6 +3,7 @@ package at.dotti.rocnet;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.commons.io.IOUtils;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -11,6 +12,8 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -51,16 +54,24 @@ public class Server {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis() + (1000 * 60));
 
+        DateFormat TIME = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT);
+
         for (String id : this.rocNetService.getQueue()) {
             Schedule schedule = this.schedules.getSchedules().get(id);
             if (schedule != null) {
-		for(ScheduledDeparture de : schedule.getDepartures()) {
+                for (ScheduledDeparture de : schedule.getDepartures()) {
                     if (de.getId().equals(stationId)) {
-                        Departure d = new Departure(new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber()), schedule.getDestination(), de.getTime(), "", de.getPlatform());
+
+                        cal.set(Calendar.MINUTE, de.getTime());
+                        String time = TIME.format(cal);
+                        boolean arriving = this.rocNetService.getBlock().contains(de.getId());
+                        Line line = new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber());
+
+                        Departure d = new Departure(arriving, line, schedule.getDestination(), time, "", de.getPlatform());
                         display.getDepartures().add(d);
-			break;
+                        break;
                     }
-		}
+                }
             }
         }
 

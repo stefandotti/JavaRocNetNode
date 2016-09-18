@@ -12,7 +12,10 @@ public class Departure {
 
 	private String current;
 
-	public Departure(Line line, String text, String time, String current, int platform) {
+    private boolean arriving;
+
+	public Departure(boolean arriving, Line line, String text, String time, String current, int platform) {
+        this.arriving = arriving;
 		this.line = line;
 		this.text = text;
 		this.time = time;
@@ -58,5 +61,13 @@ public class Departure {
 
     public void setLine(Line line) {
         this.line = line;
+    }
+
+    public boolean isArriving() {
+        return arriving;
+    }
+
+    public void setArriving(boolean arriving) {
+        this.arriving = arriving;
     }
 }

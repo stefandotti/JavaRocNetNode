@@ -97,7 +97,7 @@ public class RocNetService {
         int senderIdH = bin.read();
         int senderIdL = bin.read();
         Group group = Group.values()[bin.read()];
-        Code code = Code.values()[bin.read()];
+        int code = bin.read();
         int length = bin.read();
 
         byte[] data = new byte[length];
@@ -114,11 +114,19 @@ public class RocNetService {
                 String id = o.getId();
                 queue.add(id);
             } else if (o.getType() == TYPE.enter) {
-                block.add(o.getId());
+                block.add(o.getBid());
             } else if (o.getType() == TYPE.departure) {
-                block.remove(o.getId());
+                block.remove(o.getBid());
             } else {
                 System.err.println("unknown type = " + o.getType());
+            }
+        } else if (group == Group.Command_Station) {
+            if (code == 2) {
+                System.out.println("track power: " + data[0]);
+                if (data[0] == '0') {
+                    this.queue.clear();
+                    this.block.clear();
+                }
             }
         }
 

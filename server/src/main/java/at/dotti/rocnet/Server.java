@@ -63,7 +63,7 @@ public class Server {
                     if (de.getId().equals(stationId)) {
 
                         cal.set(Calendar.MINUTE, de.getTime());
-                        String time = TIME.format(cal);
+                        String time = TIME.format(cal.getTime());
                         boolean arriving = this.rocNetService.getBlock().contains(de.getId());
                         Line line = new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber());
 

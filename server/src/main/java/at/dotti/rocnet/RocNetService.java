@@ -14,9 +14,7 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +49,8 @@ public class RocNetService {
     private List<String> queue = new ArrayList<>();
 
     private List<String> block = new ArrayList<>();
+
+    private Map<String, List<String>> departuredBlock = new HashMap<>();
 
     @PostConstruct
     public void startup() {
@@ -110,13 +110,18 @@ public class RocNetService {
             RocNetText o = g.fromJson(text, RocNetText.class);
             if (o.getType() == TYPE.remove) {
                 queue.remove(o.getId());
+                departuredBlock.remove(o.getId());
             } else if (o.getType() == TYPE.enqueue) {
                 String id = o.getId();
                 queue.add(id);
+                departuredBlock.put(id, new ArrayList<>());
             } else if (o.getType() == TYPE.enter) {
                 block.add(o.getBid());
             } else if (o.getType() == TYPE.departure) {
                 block.remove(o.getBid());
+                if (departuredBlock.containsKey(o.getId())) {
+                    departuredBlock.get(o.getId()).add(o.getBid());
+                }
             } else {
                 System.err.println("unknown type = " + o.getType());
             }
@@ -139,5 +144,9 @@ public class RocNetService {
 
     public List<String> getBlock() {
         return block;
+    }
+
+    public Map<String, List<String>> getDeparturedBlock() {
+        return departuredBlock;
     }
 }

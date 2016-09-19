@@ -61,6 +61,14 @@ public class Server {
             if (schedule != null) {
                 for (ScheduledDeparture de : schedule.getDepartures()) {
                     if (de.getId().equals(stationId)) {
+                        if (!this.rocNetService.getDeparturedBlock().containsKey(id)) {
+                            // something is wrong
+                            // train never enqueued the schedule
+                            continue;
+                        } else if (this.rocNetService.getDeparturedBlock().get(id).contains(de.getId())) {
+                            // train was already on this station
+                            continue;
+                        }
 
                         cal.set(Calendar.MINUTE, de.getTime());
                         String time = TIME.format(cal.getTime());

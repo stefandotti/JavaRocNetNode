@@ -11,7 +11,7 @@
         <th>Linie<br/><i>Line</i></th><th>Richtung<br/><i>Direction</i></th>
         <th>Gleis<br/><i>Track</i></th></tr>
     <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
-        <td class="ar">{{departure.arriving}}</td>
+        <td class="ar"><img src="{{departure.arriving ? 'green_ani_new_layout.gif' : 'space.gif'}}" /></td>
         <td class="ti">{{departure.time}}</td>
         <td class="cu">{{departure.current}}</td>
         <td class="fa"><img src="images/{{departure.line.type}}.gif" /> {{departure.line.number}}</td>

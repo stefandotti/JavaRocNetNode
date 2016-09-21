@@ -9,8 +9,8 @@
 </div>
 <table class="departures">
     <tr><th class="ar">&nbsp;</th><th class="ti">Abfahrt<br/><i>Departure</i></th><th>Erwartet<br/><i>Estimated</i></th>
-        <th>Linie<br/><i>Line</i></th><th>Richtung<br/><i>Direction</i></th>
-        <th>Gleis<br/><i>Track</i></th></tr>
+        <th>Zug<br/><i>Train</i></th><th>Richtung<br/><i>Direction</i></th>
+        <th>Bahnsteig<br/><i>Platfom</i></th></tr>
     <tr ng-repeat="departure in $ctrl.display.departures" class="departure-list-item">
         <td class="ar"><img src="images/{{departure.arriving ? 'green_ani_new_layout.gif' : 'space.gif'}}" /></td>
         <td class="ti">{{departure.time}}</td>

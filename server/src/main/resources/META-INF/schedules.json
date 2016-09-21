@@ -1,67 +1,51 @@
 {
   "schedules": {
+    "REX_2086_Krems": {
+      "trainSign": "REX", "trainNumber": 2086,
+      "destination": "Krems an der Donau",
+      "departures": [
+        { "time": "08", "id": "sp", "platform": 1 },
+        { "time": "11", "id": "hs", "platform": 1 }
+      ]
+    },
+    "R_21083_Wien": {
+      "trainSign": "R", "trainNumber": 21083,
+      "destination": "Wien Franz-Josefs-Bahnhof",
+      "departures": [
+        { "time": "06", "id": "hs", "platform": 2 },
+        { "time": "09", "id": "sp", "platform": 2 }
+      ]
+    },
     "S40_Tulln_11": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Tulln an der Donau",
       "departures": [
-        {
-          "time": "11",
-          "id": "hs",
-          "platform": 1
-        },
-        {
-          "time": "13",
-          "id": "nd",
-          "platform": 1
-        }
+        { "time": "11", "id": "hs", "platform": 1 },
+        { "time": "13", "id": "nd", "platform": 1 }
       ]
     },
     "S40_Tulln_41": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Tulln an der Donau",
       "departures": [
-        {
-          "time": "41",
-          "id": "hs",
-          "platform": 1
-        },
-        {
-          "time": "43",
-          "id": "nd",
-          "platform": 1
-        }
+        { "time": "41", "id": "hs", "platform": 1 },
+        { "time": "43", "id": "nd", "platform": 1 }
       ]
     },
     "S40_Wien_30": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Wien Franz-Josefs-Bf",
       "departures": [
-        {
-          "time": "30",
-          "id": "nd",
-          "platform": 2
-        },
-        {
-          "time": "32",
-          "id": "hs",
-          "platform": 2
-        }
+        { "time": "30", "id": "nd", "platform": 2 },
+        { "time": "32", "id": "hs", "platform": 2 }
       ]
     },
     "S40_Wien_60": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Wien Franz-Josefs-Bf",
       "departures": [
-        {
-          "time": "00",
-          "id": "nd",
-          "platform": 2
-        },
-        {
-          "time": "02",
-          "id": "hs",
-          "platform": 2
-        }
+        { "time": "00", "id": "nd", "platform": 2 },
+        { "time": "02", "id": "hs", "platform": 2 }
       ]
     }
   }

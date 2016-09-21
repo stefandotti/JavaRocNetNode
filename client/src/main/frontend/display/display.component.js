@@ -18,6 +18,11 @@ angular.
                 }
             });
         }, 10000);
+        var time = Date.now();
+        $interval(function() {
+            var offset = Date.now() - time;
+            self.clock = time + offset;
+        }, 1000);
       }
     ]
   });

@@ -1,6 +1,6 @@
 body {
   font-family: Arial;
-  padding: 20px;
+  padding: 0px;
   background-color: #000096;
   color: white;
   width: 1024px; height: 768px; margin: 0 auto;
@@ -41,8 +41,12 @@ table.departures {
 }
 
 table.departures tr {
+    padding: 20px;
 }
 
+td.ar, th.ar {
+    padding-left: 20px;
+}
 td.ti, th.ti {
     padding-left: 30px;
 }

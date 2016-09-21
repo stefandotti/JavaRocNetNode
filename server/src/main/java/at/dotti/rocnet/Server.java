@@ -52,9 +52,9 @@ public class Server {
         display.setStationName("Heiligenstadt");
 
         Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis() + (1000 * 60));
+        cal.setTimeInMillis(System.currentTimeMillis());
 
-        DateFormat TIME = SimpleDateFormat.getTimeInstance(SimpleDateFormat.SHORT);
+        DateFormat TIME = new SimpleDateFormat("HH:mm");
 
         for (String id : this.rocNetService.getQueue()) {
             Schedule schedule = this.schedules.getSchedules().get(id);

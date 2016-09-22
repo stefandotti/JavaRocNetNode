@@ -4,28 +4,33 @@ import java.io.Serializable;
 
 public class Station implements Serializable {
 
-	private int stationId;
+	private String id;
 
-	private String stationName;
+	private String name;
 
-	public Station(int stationId, String stationName) {
-		this.stationId = stationId;
-		this.stationName = stationName;
-	}
+    private String shortName;
 
-	public String getStationName() {
-		return stationName;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setStationName(String stationName) {
-		this.stationName = stationName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public int getStationId() {
-		return stationId;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setStationId(int stationId) {
-		this.stationId = stationId;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
 }

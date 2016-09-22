@@ -8,6 +8,16 @@ import java.util.Map;
  */
 public class Schedules {
 
+    private List<Station> stations;
+
+    public List<Station> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<Station> stations) {
+        this.stations = stations;
+    }
+
     public Map<String, Schedule> getSchedules() {
         return schedules;
     }

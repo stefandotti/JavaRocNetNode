@@ -1,4 +1,8 @@
 {
+  "stations": [
+    { "name": "Wien Heiligenstadt", "shortName": "Heiligenstadt", "id": "hs" },
+    { "name": "Wien Spittelau", "shortName": "Spittelau", "id": "sp" }
+  ],
   "schedules": {
     "REX_2086_Krems": {
       "trainSign": "REX", "trainNumber": 2086,

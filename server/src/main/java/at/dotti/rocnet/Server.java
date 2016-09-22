@@ -38,8 +38,7 @@ public class Server {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public List<Station> getStations() {
-        List<Station> stations = new ArrayList<>();
-        return stations;
+        return this.schedules.getStations();
     }
 
     @GET
@@ -47,9 +46,21 @@ public class Server {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Display getStation(@PathParam("stationId") String stationId) {
+
+        Station station = null;
+        for (Station s : this.schedules.getStations()) {
+            if (s.getId().equals(stationId)) {
+                station = s;
+            }
+        }
+        String stationName = "unkonwn station";
+        if (station != null) {
+            stationName = station.getName();
+        }
+
         Display display = new Display();
-        display.setStationId("hs");
-        display.setStationName("Heiligenstadt");
+        display.setStationId(stationId);
+        display.setStationName(stationName);
 
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());

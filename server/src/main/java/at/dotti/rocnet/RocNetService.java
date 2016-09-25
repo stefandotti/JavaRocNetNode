@@ -128,9 +128,11 @@ public class RocNetService {
         } else if (group == Group.Command_Station) {
             if (code == 2) {
                 System.out.println("track power: " + data[0]);
-                if (data[0] == '0') {
+                if (data[0] == 0) {
+                    System.out.println("reset of queues");
                     this.queue.clear();
                     this.block.clear();
+                    this.departuredBlock.clear();
                 }
             }
         }

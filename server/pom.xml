@@ -16,11 +16,11 @@
         <finalName>server</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomee.maven</groupId>
+                <groupId>org.apache.openejb.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
-                <version>7.0.1</version>
+                <version>1.7.1</version>
                 <configuration>
-                    <tomeeVersion>7.0.1</tomeeVersion>
+                    <tomeeVersion>1.7.1</tomeeVersion>
                     <tomeeClassifier>plus</tomeeClassifier>
                     <apps>
                         <app>${project.groupId}:${project.artifactId}:${project.version}:war</app>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -49,6 +49,11 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.4.3</version>
         </dependency>
 
     </dependencies>

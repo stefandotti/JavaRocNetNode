@@ -7,6 +7,7 @@ public class ScheduledDeparture {
 
     private short time;
     private String id;
+    private String bid;
     private int platform;
 
     public short getTime() {
@@ -31,5 +32,13 @@ public class ScheduledDeparture {
 
     public void setPlatform(int platform) {
         this.platform = platform;
+    }
+    
+    public void setBid(String bid) {
+        this.bid = bid;
+    }
+    
+    public String getBid() {
+        return this.bid;
     }
 }

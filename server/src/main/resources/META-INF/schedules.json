@@ -1,55 +1,86 @@
 {
   "stations": [
     { "name": "Wien Heiligenstadt", "shortName": "Heiligenstadt", "id": "hs" },
-    { "name": "Wien Spittelau", "shortName": "Spittelau", "id": "sp" }
+    { "name": "Wien Spittelau", "shortName": "Spittelau", "id": "sp" },
+    { "name": "Wien Nußdorf", "shortName": "Nußdorf", "id": "nd" }
   ],
   "schedules": {
     "REX_2086_Krems": {
       "trainSign": "REX", "trainNumber": 2086,
       "destination": "Krems an der Donau",
       "departures": [
-        { "time": "08", "id": "sp", "platform": 1 },
-        { "time": "11", "id": "hs", "platform": 1 }
+        { "time": "11", "id": "hs", "bid": "hs", "platform": 1 }
       ]
     },
     "R_21083_Wien": {
       "trainSign": "R", "trainNumber": 21083,
       "destination": "Wien Franz-Josefs-Bahnhof",
       "departures": [
-        { "time": "06", "id": "hs", "platform": 2 },
-        { "time": "09", "id": "sp", "platform": 2 }
+        { "time": "06", "id": "hs", "bid": "hs-2", "platform": 2 }
       ]
     },
     "S40_Tulln_11": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Tulln an der Donau",
       "departures": [
-        { "time": "11", "id": "hs", "platform": 1 },
-        { "time": "13", "id": "nd", "platform": 1 }
+        { "time": "11", "id": "hs", "bid": "hs", "platform": 1 },
+        { "time": "13", "id": "nd", "bid": "nd", "platform": 1 }
+      ]
+    },
+    "S40_Kritzendorf_22": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Kritzendorf",
+      "departures": [
+        { "time": "22", "id": "hs", "bid": "hs", "platform": 1 },
+        { "time": "24", "id": "nd", "bid": "nd", "platform": 1 }
+      ]
+    },
+    "S40_Kritzendorf_52": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Kritzendorf",
+      "departures": [
+        { "time": "52", "id": "hs", "bid": "hs", "platform": 1 },
+        { "time": "54", "id": "nd", "bid": "nd", "platform": 1 }
       ]
     },
     "S40_Tulln_41": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Tulln an der Donau",
       "departures": [
-        { "time": "41", "id": "hs", "platform": 1 },
-        { "time": "43", "id": "nd", "platform": 1 }
+        { "time": "41", "id": "hs", "bid": "hs", "platform": 1 },
+        { "time": "43", "id": "nd", "bid": "nd", "platform": 1 }
       ]
     },
-    "S40_Wien_30": {
+    "S40_Wien_01": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Wien Franz-Josefs-Bf",
       "departures": [
-        { "time": "30", "id": "nd", "platform": 2 },
-        { "time": "32", "id": "hs", "platform": 2 }
+        { "time": "03", "id": "nd", "bid": "nd-2", "platform": 2 },
+        { "time": "05", "id": "hs", "bid": "hs-2", "platform": 2 }
       ]
     },
-    "S40_Wien_60": {
+    "S40_Wien_31": {
       "trainSign": "S", "trainNumber": 40,
       "destination": "Wien Franz-Josefs-Bf",
       "departures": [
-        { "time": "00", "id": "nd", "platform": 2 },
-        { "time": "02", "id": "hs", "platform": 2 }
+        { "time": "33", "id": "nd", "bid": "nd-2", "platform": 2 },
+        { "time": "35", "id": "hs", "bid": "hs-2", "platform": 2 }
+      ]
+    },
+    "S40_Wien_08": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Wien Franz-Josefs-Bf",
+      "departures": [
+        { "time": "13", "id": "nd", "bid": "nd-2", "platform": 2 },
+        { "time": "15", "id": "hs", "bid": "hs-2", "platform": 2 }
+      ]
+    },
+    "S40_Wien_38": {
+      "trainSign": "S", "trainNumber": 40,
+      "destination": "Wien Franz-Josefs-Bf",
+      "departures": [
+        { "time": "43", "id": "nd", "bid": "nd-2", "platform": 2 },
+        { "time": "45", "id": "hs", "bid": "hs-2", "platform": 2 }
       ]
     }
   }

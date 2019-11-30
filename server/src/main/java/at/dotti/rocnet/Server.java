@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Comparator;
 
 @Path("/rest")
 @ApplicationScoped
@@ -75,15 +76,17 @@ public class Server {
                         if (!this.rocNetService.getDeparturedBlock().containsKey(id)) {
                             // something is wrong
                             // train never enqueued the schedule
+                            System.out.println("train not enqueued: " + de);
                             continue;
-                        } else if (this.rocNetService.getDeparturedBlock().get(id).contains(de.getId())) {
+                        } else if (this.rocNetService.getDeparturedBlock().get(id).contains(de.getBid())) {
                             // train was already on this station
+                            System.out.println("train already exited: " + de);
                             continue;
                         }
 
                         cal.set(Calendar.MINUTE, de.getTime());
                         String time = TIME.format(cal.getTime());
-                        boolean arriving = this.rocNetService.getBlock().contains(de.getId());
+                        boolean arriving = this.rocNetService.getBlock().contains(de.getBid());
                         Line line = new Line(schedule.getTrainSign().toLowerCase(), schedule.getTrainNumber());
 
                         Departure d = new Departure(arriving, line, schedule.getDestination(), time, "", de.getPlatform());
@@ -91,8 +94,16 @@ public class Server {
                         break;
                     }
                 }
+            } else {
+                System.out.println("no schedules for " + id);
             }
         }
+        
+        display.getDepartures().sort(new Comparator<Departure>() {
+                public int compare(Departure a, Departure b) {
+                    return a.getTime().compareTo(b.getTime());
+                }
+        });
 
         return display;
     }
